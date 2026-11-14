@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 font-sans text-steel-100 antialiased leading-[1.5];
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display leading-[1.2] tracking-tight text-white;
+  }
+
+  ::selection {
+    @apply bg-electric-500/40 text-white;
+  }
+}
+
+@layer components {
+  .text-gradient-electric {
+    @apply bg-gradient-to-r from-electric-300 via-electric-400 to-electric-600 bg-clip-text text-transparent;
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-white/10 bg-navy-900/60 shadow-card backdrop-blur-sm;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-white/10 bg-navy-950/70 px-4 py-3 text-[15px] text-white placeholder:text-steel-500 transition-colors duration-200 focus:border-electric-500 focus:outline-none focus:ring-2 focus:ring-electric-500/30;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

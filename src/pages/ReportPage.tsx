@@ -1,0 +1,49 @@
+import { useParams } from 'react-router-dom';
+import { Clock, ShieldAlert } from 'lucide-react';
+import { ReportView } from '@/components/report/ReportView';
+import { NotFoundPanel } from '@/components/ui/NotFoundPanel';
+import { formatDate } from '@/lib/format';
+import { isLinkExpired } from '@/lib/orders';
+import { useDemoStore } from '@/store/DemoStoreContext';
+
+export function ReportPage() {
+  const { token } = useParams();
+  const { getOrderByAccessToken, packages } = useDemoStore();
+  const order = token ? getOrderByAccessToken(token) : undefined;
+
+  if (!order || !order.access || order.reportStatus !== 'published') {
+    return (
+      <NotFoundPanel
+        title="This report link is not valid"
+        description="Check that you opened the full link from your email. If you need help, contact us and we will send a new link."
+      />
+    );
+  }
+
+  if (isLinkExpired(order.access.expiresAt)) {
+    return (
+      <div className="mx-auto flex max-w-xl flex-col items-center px-5 py-24 text-center">
+        <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/30 bg-amber-500/10 text-amber-300">
+          <Clock className="h-7 w-7" />
+        </span>
+        <h1 className="mt-6 text-3xl font-semibold">This report link has expired</h1>
+        <p className="mt-4 text-steel-300">
+          Secure report links are valid for a limited time. The link for order {order.reference} expired on{' '}
+          {formatDate(order.access.expiresAt)}. Contact us to request a new link.
+        </p>
+      </div>
+    );
+  }
+
+  const pkg = packages.find((item) => item.id === order.packageId);
+
+  return (
+    <>
+      <div className="mx-auto flex max-w-5xl items-center gap-3 px-5 pt-8 text-sm text-steel-400 lg:px-8">
+        <ShieldAlert className="h-4 w-4 text-electric-400" />
+        Secure report link. It expires on {formatDate(order.access.expiresAt)}.
+      </div>
+      <ReportView order={order} pkg={pkg} />
+    </>
+  );
+}

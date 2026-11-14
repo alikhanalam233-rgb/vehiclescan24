@@ -1,0 +1,13 @@
+{
+  "projectId": "72902759",
+  "functions": {
+    "create-order": {
+      "hasChanged": false,
+      "hash": "0958db9ce76dddf16bbe9f4d50abb648ac78cb6fcccbf9ec927b3eff815a8334"
+    },
+    "get-order": {
+      "hasChanged": false,
+      "hash": "da3d56a1a00110c6b83bf95038d76043673db995e7928bc601a9efcf80488462"
+    }
+  }
+}
