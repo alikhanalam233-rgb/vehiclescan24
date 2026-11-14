@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { RequireAdmin } from '@/components/admin/RequireAdmin';
 import { ScrollManager } from '@/components/layout/ScrollManager';
@@ -46,6 +47,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      <Analytics />
     </DemoStoreProvider>
   );
 }
