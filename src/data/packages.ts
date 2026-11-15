@@ -2,26 +2,16 @@ import type { ReportPackage } from '@/types';
 
 export const DEFAULT_PACKAGES: ReportPackage[] = [
   {
-    id: 'bronze',
-    name: 'Bronze',
-    price: 9.99,
-    tagline: 'Basic checks for a quick first look.',
-    reportValidityDays: 30,
-    features: [
-      'Mileage consistency check',
-      'Written-off and total-loss status',
-      'Basic VIN and specification check',
-      'Online report view',
-    ],
-  },
-  {
     id: 'silver',
     name: 'Silver',
     price: 19.99,
     tagline: 'Essential checks with stolen vehicle screening.',
     reportValidityDays: 30,
     features: [
-      'Everything in Bronze',
+      'Mileage consistency check',
+      'Written-off and total-loss status',
+      'Basic VIN and specification check',
+      'Online report view',
       'Stolen vehicle register check',
       'Registration and ownership history',
       'Online report and PDF download',

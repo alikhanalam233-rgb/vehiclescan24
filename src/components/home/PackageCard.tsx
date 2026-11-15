@@ -1,4 +1,4 @@
-import { Award, CheckCircle2, Gem, Medal, Shield, ShieldCheck, type LucideIcon } from 'lucide-react';
+import { Award, CheckCircle2, Gem, Medal, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { ButtonLink } from '@/components/ui/Button';
 import { formatPrice } from '@/lib/format';
 import type { PackageId, ReportPackage } from '@/types';
@@ -10,7 +10,6 @@ interface TierStyle {
 }
 
 const TIER_STYLES: Record<PackageId, TierStyle> = {
-  bronze: { icon: Shield, iconClass: 'text-amber-700', bar: 'from-amber-600 to-amber-800' },
   silver: { icon: ShieldCheck, iconClass: 'text-ink-600', bar: 'from-ink-300 to-ink-500' },
   gold: { icon: Medal, iconClass: 'text-brand-700', bar: 'from-brand-300 to-brand-500' },
   platinum: { icon: Award, iconClass: 'text-brand-800', bar: 'from-brand-400 to-brand-600' },
