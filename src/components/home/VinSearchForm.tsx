@@ -30,7 +30,7 @@ export function VinSearchForm() {
         hint="17 characters, found on the windscreen or in your registration document."
       >
         <div className="relative">
-          <ScanSearch className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-steel-500" />
+          <ScanSearch className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink-500" />
           <input
             id="vin"
             name="vin"
@@ -52,7 +52,7 @@ export function VinSearchForm() {
           <span
             id="vin-count"
             className={`absolute right-4 top-1/2 -translate-y-1/2 font-mono text-xs ${
-              normalized.length === 17 ? 'text-emerald-300' : 'text-steel-500'
+              normalized.length === 17 ? 'text-emerald-700' : 'text-ink-500'
             }`}
           >
             {normalized.length}/17

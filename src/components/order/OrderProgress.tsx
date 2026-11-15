@@ -24,15 +24,15 @@ export function OrderProgress({ paymentStatus, reportStatus }: { paymentStatus: 
             <span
               className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-semibold ${
                 step.done
-                  ? 'border-electric-400 bg-electric-500 text-white'
+                  ? 'border-brand-500 bg-brand-500 text-ink-900'
                   : isCurrent
-                    ? 'border-electric-400 text-electric-300'
-                    : 'border-white/15 text-steel-500'
+                    ? 'border-brand-500 text-brand-800'
+                    : 'border-black/15 text-ink-500'
               }`}
             >
               {step.done ? <Check className="h-4 w-4" strokeWidth={3} /> : isCurrent ? <CircleDot className="h-4 w-4" /> : index + 1}
             </span>
-            <span className={`text-sm ${step.done || isCurrent ? 'text-white' : 'text-steel-500'}`}>{step.label}</span>
+            <span className={`text-sm ${step.done || isCurrent ? 'text-ink-900' : 'text-ink-500'}`}>{step.label}</span>
           </li>
         );
       })}

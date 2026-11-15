@@ -23,11 +23,11 @@ export function ReportPage() {
   if (isLinkExpired(order.access.expiresAt)) {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center px-5 py-24 text-center">
-        <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/30 bg-amber-500/10 text-amber-300">
+        <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-600/40 bg-amber-50 text-amber-700">
           <Clock className="h-7 w-7" />
         </span>
         <h1 className="mt-6 text-3xl font-semibold">This report link has expired</h1>
-        <p className="mt-4 text-steel-300">
+        <p className="mt-4 text-ink-700">
           Secure report links are valid for a limited time. The link for order {order.reference} expired on{' '}
           {formatDate(order.access.expiresAt)}. Contact us to request a new link.
         </p>
@@ -39,8 +39,8 @@ export function ReportPage() {
 
   return (
     <>
-      <div className="mx-auto flex max-w-5xl items-center gap-3 px-5 pt-8 text-sm text-steel-400 lg:px-8">
-        <ShieldAlert className="h-4 w-4 text-electric-400" />
+      <div className="mx-auto flex max-w-5xl items-center gap-3 px-5 pt-8 text-sm text-ink-600 lg:px-8">
+        <ShieldAlert className="h-4 w-4 text-brand-700" />
         Secure report link. It expires on {formatDate(order.access.expiresAt)}.
       </div>
       <ReportView order={order} pkg={pkg} />

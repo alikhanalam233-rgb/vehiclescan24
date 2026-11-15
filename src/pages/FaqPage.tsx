@@ -46,21 +46,21 @@ const FAQ_ITEMS = [
 export function FaqPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 lg:px-8 lg:py-24">
-      <p className="text-sm font-medium uppercase tracking-[0.18em] text-electric-400">Help centre</p>
+      <p className="text-sm font-medium uppercase tracking-[0.18em] text-brand-800">Help centre</p>
       <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">Frequently asked questions</h1>
-      <p className="mt-4 text-steel-300">Quick answers about VIN checks, reports, delivery and payment.</p>
+      <p className="mt-4 text-ink-700">Quick answers about VIN checks, reports, delivery and payment.</p>
 
       <div className="mt-12 space-y-3">
         {FAQ_ITEMS.map((item) => (
           <details
             key={item.question}
-            className="group surface-card overflow-hidden open:border-electric-400/35 transition-colors duration-300"
+            className="group surface-card overflow-hidden border-brand-500/60 transition-colors duration-300"
           >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-left text-base font-medium text-white marker:hidden [&::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-left text-base font-medium text-ink-900 marker:hidden [&::-webkit-details-marker]:hidden">
               {item.question}
-              <ChevronDown className="h-5 w-5 flex-shrink-0 text-electric-400 transition-transform duration-300 group-open:rotate-180" />
+              <ChevronDown className="h-5 w-5 flex-shrink-0 text-brand-800 transition-transform duration-300 group-open:rotate-180" />
             </summary>
-            <p className="px-6 pb-6 text-sm leading-relaxed text-steel-300">{item.answer}</p>
+            <p className="px-6 pb-6 text-sm leading-relaxed text-ink-700">{item.answer}</p>
           </details>
         ))}
       </div>

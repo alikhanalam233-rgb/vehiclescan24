@@ -25,7 +25,7 @@
 
 @layer components {
   .text-gradient-electric {
-    @apply bg-gradient-to-r from-brand-800 via-brand-700 to-brand-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-800 via-brand-700 to-brand-700 bg-clip-text text-transparent;
   }
 
   .surface-card {

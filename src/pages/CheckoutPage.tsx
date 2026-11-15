@@ -69,9 +69,9 @@ export function CheckoutPage() {
   return (
     <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-20">
       <div className="max-w-2xl">
-        <p className="text-sm font-medium uppercase tracking-[0.18em] text-electric-400">Guest checkout</p>
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-brand-700">Guest checkout</p>
         <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Order your vehicle report</h1>
-        <p className="mt-3 text-steel-300">No account required. We only need your email address and the VIN.</p>
+        <p className="mt-3 text-ink-700">No account required. We only need your email address and the VIN.</p>
       </div>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
@@ -127,7 +127,7 @@ export function CheckoutPage() {
             </Field>
 
             <div className="space-y-2">
-              <label className="flex items-start gap-3 text-sm text-steel-300">
+              <label className="flex items-start gap-3 text-sm text-ink-700">
                 <input
                   type="checkbox"
                   checked={acceptedTerms}
@@ -135,22 +135,22 @@ export function CheckoutPage() {
                     setAcceptedTerms(event.target.checked);
                     setErrors((current) => ({ ...current, terms: undefined }));
                   }}
-                  className="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-white/20 bg-navy-950 accent-electric-500"
+                  className="mt-0.5 h-4 w-4 flex-shrink-0 rounded accent-brand-500 border-black/20 bg-white"
                 />
                 <span>
                   I accept the{' '}
-                  <Link to="/terms" className="text-electric-300 underline-offset-4 hover:underline">
+                  <Link to="/terms" className="text-brand-700 underline-offset-4 hover:underline">
                     Terms & Conditions
                   </Link>{' '}
                   and have read the{' '}
-                  <Link to="/privacy" className="text-electric-300 underline-offset-4 hover:underline">
+                  <Link to="/privacy" className="text-brand-700 underline-offset-4 hover:underline">
                     Privacy Policy
                   </Link>
                   .
                 </span>
               </label>
               {errors.terms && (
-                <p role="alert" className="text-sm text-rose-300">
+                <p role="alert" className="text-sm text-rose-700">
                   {errors.terms}
                 </p>
               )}

@@ -12,9 +12,9 @@ interface ReportViewProps {
 
 function DetailItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-navy-950/60 p-4">
-      <dt className="text-xs uppercase tracking-wider text-steel-500">{label}</dt>
-      <dd className="mt-1.5 text-base font-medium text-white">{value || 'Not recorded'}</dd>
+    <div className="rounded-xl border border-black/10 bg-ink-50 p-4">
+      <dt className="text-xs uppercase tracking-wider text-ink-500">{label}</dt>
+      <dd className="mt-1.5 text-base font-medium text-ink-900">{value || 'Not recorded'}</dd>
     </div>
   );
 }
@@ -28,35 +28,35 @@ export function ReportView({ order, pkg }: ReportViewProps) {
       <header className="surface-card space-y-6 p-6 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.18em] text-electric-300">{pkg?.name ?? ''} report</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-brand-800">{pkg?.name ?? ''} report</p>
             <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
-            <p className="font-mono text-sm tracking-[0.12em] text-steel-300">{normalizeVin(order.vin)}</p>
+            <p className="font-mono text-sm tracking-[0.12em] text-ink-700">{normalizeVin(order.vin)}</p>
           </div>
           <div className="flex flex-col items-start gap-3 sm:items-end">
             <button
               type="button"
               disabled
-              className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 text-sm font-medium text-steel-300"
+              className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-xl border border-black/15 bg-black/5 px-5 text-sm font-medium text-ink-700"
             >
               <Download className="h-4 w-4" />
               Download PDF
             </button>
-            <p className="max-w-xs text-xs text-steel-500 sm:text-right">
+            <p className="max-w-xs text-xs text-ink-500 sm:text-right">
               PDF download is not connected in this preview. Final files will be served from private storage through
               a short-lived link.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-white/10 pt-5 text-sm text-steel-300">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-black/10 pt-5 text-sm text-ink-700">
           <span>
-            Published <span className="text-white">{access ? formatDate(access.publishedAt) : '-'}</span>
+            Published <span className="text-ink-900">{access ? formatDate(access.publishedAt) : '-'}</span>
           </span>
           <span>
-            Link valid until <span className="text-white">{access ? formatDate(access.expiresAt) : '-'}</span>
+            Link valid until <span className="text-ink-900">{access ? formatDate(access.expiresAt) : '-'}</span>
           </span>
           <span>
-            Reference <span className="font-mono text-white">{order.reference}</span>
+            Reference <span className="font-mono text-ink-900">{order.reference}</span>
           </span>
         </div>
       </header>
@@ -77,7 +77,7 @@ export function ReportView({ order, pkg }: ReportViewProps) {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Findings</h2>
         {findings.length === 0 ? (
-          <p className="surface-card p-6 text-sm text-steel-300">No findings were recorded for this vehicle.</p>
+          <p className="surface-card p-6 text-sm text-ink-700">No findings were recorded for this vehicle.</p>
         ) : (
           <ul className="space-y-3">
             {findings.map((finding) => {
@@ -85,8 +85,8 @@ export function ReportView({ order, pkg }: ReportViewProps) {
               return (
                 <li key={finding.id} className="surface-card flex flex-col gap-3 p-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                   <div className="space-y-1.5">
-                    <h3 className="text-base font-semibold text-white">{finding.title}</h3>
-                    <p className="text-sm leading-relaxed text-steel-300">{finding.details}</p>
+                    <h3 className="text-base font-semibold text-ink-900">{finding.title}</h3>
+                    <p className="text-sm leading-relaxed text-ink-700">{finding.details}</p>
                   </div>
                   <StatusBadge tone={meta.tone}>{meta.label}</StatusBadge>
                 </li>
@@ -96,8 +96,8 @@ export function ReportView({ order, pkg }: ReportViewProps) {
         )}
       </section>
 
-      <p className="flex items-start gap-3 rounded-xl border border-white/10 bg-navy-900/50 p-4 text-xs leading-relaxed text-steel-400">
-        <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-steel-400" />
+      <p className="flex items-start gap-3 rounded-xl border border-black/10 bg-ink-50 p-4 text-xs leading-relaxed text-ink-600">
+        <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-ink-600" />
         This report is based on information available at the time of compilation. VehicleScan24 is an independent
         service and does not guarantee the completeness of third-party records.
       </p>

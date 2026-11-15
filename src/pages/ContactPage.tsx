@@ -34,9 +34,9 @@ export function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-24">
       <div className="max-w-2xl">
-        <p className="text-sm font-medium uppercase tracking-[0.18em] text-electric-400">Contact</p>
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-brand-700">Contact</p>
         <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">We are happy to help</h1>
-        <p className="mt-4 text-steel-300">
+        <p className="mt-4 text-ink-700">
           Questions about a VIN, an order or a report link? Send us a message and include your order reference if you
           have one.
         </p>
@@ -45,20 +45,20 @@ export function ContactPage() {
       <div className="mt-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <aside className="space-y-4">
           <div className="surface-card flex gap-4 p-6">
-            <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric-400" />
+            <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-700" />
             <div>
               <h2 className="font-semibold">Email</h2>
-              <p className="mt-1 text-sm text-steel-300">support@vehiclescan24.nl</p>
+              <p className="mt-1 text-sm text-ink-700">support@vehiclescan24.nl</p>
             </div>
           </div>
           <div className="surface-card flex gap-4 p-6">
-            <Clock className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric-400" />
+            <Clock className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-700" />
             <div>
               <h2 className="font-semibold">Response time</h2>
-              <p className="mt-1 text-sm text-steel-300">Monday to Friday, 09:00 to 17:00 CET. We reply within one business day.</p>
+              <p className="mt-1 text-sm text-ink-700">Monday to Friday, 09:00 to 17:00 CET. We reply within one business day.</p>
             </div>
           </div>
-          <p className="flex gap-3 rounded-xl border border-white/10 bg-navy-900/50 p-4 text-xs leading-relaxed text-steel-400">
+          <p className="flex gap-3 rounded-xl border border-black/10 bg-ink-50 p-4 text-xs leading-relaxed text-ink-600">
             <Info className="mt-0.5 h-4 w-4 flex-shrink-0" />
             Preview build: this form does not send messages yet. Email delivery is not connected.
           </p>
@@ -104,7 +104,7 @@ export function ContactPage() {
             />
           </Field>
           {previewNotice && (
-            <p role="status" className="rounded-xl border border-electric-400/30 bg-electric-500/10 px-4 py-3 text-sm text-electric-100">
+            <p role="status" className="rounded-xl border border-brand-500/50 bg-brand-100 px-4 py-3 text-sm text-ink-900">
               Your message is valid, but this preview cannot deliver it yet. Please email us at support@vehiclescan24.nl in the meantime.
             </p>
           )}

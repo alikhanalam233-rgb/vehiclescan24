@@ -3,11 +3,11 @@ import type { ReactNode } from 'react';
 export type Tone = 'neutral' | 'info' | 'success' | 'warning' | 'error';
 
 const TONE_CLASSES: Record<Tone, string> = {
-  neutral: 'border-white/15 bg-white/5 text-steel-200',
-  info: 'border-electric-400/40 bg-electric-500/10 text-electric-200',
-  success: 'border-emerald-400/40 bg-emerald-500/10 text-emerald-200',
-  warning: 'border-amber-400/40 bg-amber-500/10 text-amber-200',
-  error: 'border-rose-400/40 bg-rose-500/10 text-rose-200',
+  neutral: 'border-black/15 bg-black/5 text-ink-800',
+  info: 'border-brand-500/50 bg-brand-100 text-brand-800',
+  success: 'border-emerald-600/40 bg-emerald-50 text-emerald-800',
+  warning: 'border-amber-600/40 bg-amber-50 text-amber-800',
+  error: 'border-rose-600/40 bg-rose-50 text-rose-800',
 };
 
 export function StatusBadge({ tone = 'neutral', children }: { tone?: Tone; children: ReactNode }) {
