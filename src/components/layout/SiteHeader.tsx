@@ -31,7 +31,7 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled || menuOpen
-          ? 'border-b border-white/10 bg-navy-950/90 backdrop-blur-xl'
+          ? 'border-b border-black/10 bg-white/90 backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -43,7 +43,7 @@ export function SiteHeader() {
             <Link
               key={item.label}
               to={item.to}
-              className="rounded-lg px-3.5 py-2 text-sm text-steel-200 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+              className="rounded-lg px-3.5 py-2 text-sm text-ink-800 transition-colors duration-200 hover:bg-black/5 hover:text-ink-900"
             >
               {item.label}
             </Link>
@@ -62,7 +62,7 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-white transition-colors hover:bg-white/5 md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-black/10 text-ink-900 transition-colors hover:bg-black/5 md:hidden"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -80,7 +80,7 @@ export function SiteHeader() {
             <NavLink
               key={item.label}
               to={item.to}
-              className="rounded-xl px-4 py-3 text-base text-steel-100 hover:bg-white/5"
+              className="rounded-xl px-4 py-3 text-base text-ink-900 hover:bg-black/5"
             >
               {item.label}
             </NavLink>

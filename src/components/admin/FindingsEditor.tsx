@@ -45,18 +45,18 @@ export function FindingsEditor({ order }: { order: Order }) {
   return (
     <div className="space-y-5">
       {findings.length === 0 && (
-        <p className="surface-card p-6 text-sm text-steel-400">No findings yet. Add the findings from your research below.</p>
+        <p className="surface-card p-6 text-sm text-ink-600">No findings yet. Add the findings from your research below.</p>
       )}
 
       {findings.map((finding, index) => (
         <div key={finding.id} className="surface-card space-y-4 p-5">
           <div className="flex items-center justify-between gap-3">
-            <span className="text-xs uppercase tracking-wider text-steel-500">Finding {index + 1}</span>
+            <span className="text-xs uppercase tracking-wider text-ink-500">Finding {index + 1}</span>
             <button
               type="button"
               onClick={() => remove(finding.id)}
               aria-label={`Remove finding ${index + 1}`}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-steel-400 transition-colors hover:bg-rose-500/10 hover:text-rose-300"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-ink-600 transition-colors hover:bg-rose-500/10 hover:text-rose-700"
             >
               <Trash2 className="h-4 w-4" />
             </button>

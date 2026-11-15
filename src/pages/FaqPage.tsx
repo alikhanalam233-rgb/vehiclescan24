@@ -14,7 +14,7 @@ const FAQ_ITEMS = [
   {
     question: 'How long does it take to receive my report?',
     answer:
-      'Reports are compiled manually by our team. Delivery times depend on the package you choose; Diamond and Black Diamond include priority delivery. Once your report is ready, we email you a secure link.',
+      'Reports are compiled manually by our team. Delivery times depend on the package you choose; Diamond includes priority delivery. Once your report is ready, we email you a secure link.',
   },
   {
     question: 'Do I need to create an account?',
@@ -24,7 +24,7 @@ const FAQ_ITEMS = [
   {
     question: 'How long is my report link valid?',
     answer:
-      'Links are valid for 30 to 90 days depending on your package, and for 12 months with Black Diamond. After that the link expires for security reasons. You can contact us to request a new link.',
+      'Links are valid for 30 to 90 days depending on your package. After that the link expires for security reasons. You can contact us to request a new link.',
   },
   {
     question: 'Can I download my report as a PDF?',

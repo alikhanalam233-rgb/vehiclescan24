@@ -1,4 +1,4 @@
-export type PackageId = 'silver' | 'platinum' | 'gold' | 'premium' | 'diamond' | 'black-diamond';
+export type PackageId = 'bronze' | 'silver' | 'gold' | 'platinum' | 'diamond';
 
 export interface ReportPackage {
   id: PackageId;

@@ -64,7 +64,7 @@ export function ReportDeliveryPanel({ order }: { order: Order }) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-semibold">Report status</h2>
-            <p className="mt-1 text-sm text-steel-400">Work through the steps in order: start, upload, publish.</p>
+            <p className="mt-1 text-sm text-ink-600">Work through the steps in order: start, upload, publish.</p>
           </div>
           <StatusBadge tone={reportMeta.tone}>{reportMeta.label}</StatusBadge>
         </div>
@@ -85,8 +85,8 @@ export function ReportDeliveryPanel({ order }: { order: Order }) {
         </div>
 
         {current.reportFile && (
-          <p className="text-sm text-steel-300">
-            Current file: <span className="text-white">{current.reportFile.name}</span> ({current.reportFile.sizeKb} KB,
+          <p className="text-sm text-ink-700">
+            Current file: <span className="text-ink-900">{current.reportFile.name}</span> ({current.reportFile.sizeKb} KB,
             uploaded {formatDate(current.reportFile.uploadedAt)})
           </p>
         )}
@@ -95,17 +95,17 @@ export function ReportDeliveryPanel({ order }: { order: Order }) {
       <section className="surface-card space-y-5 p-6">
         <div>
           <h2 className="font-semibold">Publish to customer</h2>
-          <p className="mt-1 text-sm text-steel-400">
+          <p className="mt-1 text-sm text-ink-600">
             Publishing creates a secure link that expires after the period set for the package.
           </p>
         </div>
 
         {current.reportStatus === 'published' && publishedLink ? (
           <div className="space-y-3">
-            <p className="break-all rounded-xl border border-white/10 bg-navy-950/70 p-4 font-mono text-xs text-steel-200">
+            <p className="break-all rounded-xl border border-black/10 bg-ink-50 p-4 font-mono text-xs text-ink-800">
               {publishedLink}
             </p>
-            <p className="text-xs text-steel-500">Expires {current.access ? formatDate(current.access.expiresAt) : '-'}</p>
+            <p className="text-xs text-ink-500">Expires {current.access ? formatDate(current.access.expiresAt) : '-'}</p>
             <button type="button" onClick={copyLink} className={buttonStyles({ variant: 'secondary' })}>
               <Copy className="h-4 w-4" />
               {copied ? 'Copied' : 'Copy link'}
@@ -123,14 +123,14 @@ export function ReportDeliveryPanel({ order }: { order: Order }) {
           </button>
         )}
         {!current.reportFile && current.reportStatus !== 'published' && (
-          <p className="text-xs text-steel-500">Upload the finished PDF before publishing.</p>
+          <p className="text-xs text-ink-500">Upload the finished PDF before publishing.</p>
         )}
       </section>
 
       <section className="surface-card space-y-4 p-6">
         <div>
           <h2 className="font-semibold">Customer email</h2>
-          <p className="mt-1 text-sm text-steel-400">Send the report-ready notification to {current.customerEmail}.</p>
+          <p className="mt-1 text-sm text-ink-600">Send the report-ready notification to {current.customerEmail}.</p>
         </div>
         <button
           type="button"
@@ -144,7 +144,7 @@ export function ReportDeliveryPanel({ order }: { order: Order }) {
       </section>
 
       {message && (
-        <p role="status" className="rounded-xl border border-electric-400/30 bg-electric-500/10 px-4 py-3 text-sm text-electric-100">
+        <p role="status" className="rounded-xl border border-brand-500/50 bg-brand-500/15 px-4 py-3 text-sm text-ink-900">
           {message}
         </p>
       )}
