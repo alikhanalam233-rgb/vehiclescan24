@@ -6,6 +6,7 @@ import { Field } from '@/components/ui/Field';
 import { buttonStyles } from '@/components/ui/Button';
 import { formatPrice } from '@/lib/format';
 import { normalizeVin, validateVin } from '@/lib/vin';
+import { createCustomerOrder, OrderRequestError } from '@/lib/customerOrders';
 import { useDemoStore } from '@/store/DemoStoreContext';
 import type { PackageId } from '@/types';
 
@@ -21,7 +22,7 @@ interface FormErrors {
 export function CheckoutPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { packages, createOrder } = useDemoStore();
+  const { packages } = useDemoStore();
 
   const requestedPackage = searchParams.get('package');
   const initialPackage = packages.find((pkg) => pkg.id === requestedPackage) ?? packages.find((pkg) => pkg.highlight) ?? packages[0];
@@ -44,20 +45,25 @@ export function CheckoutPage() {
     return next;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const next = validate();
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
     setSubmitting(true);
-    const order = createOrder({ customerEmail: email.trim(), vin: normalizeVin(vin), packageId });
-    if (!order) {
-      setErrors({ submit: 'This package is no longer available. Please choose another one.' });
+    try {
+      const order = await createCustomerOrder({
+        customerEmail: email.trim(),
+        vin: normalizeVin(vin),
+        packageId,
+      });
+      navigate(`/order/${order.reference}?t=${order.accessToken}`);
+    } catch (error) {
+      const message = error instanceof OrderRequestError ? error.message : 'Something went wrong. Please try again.';
+      setErrors({ submit: message });
       setSubmitting(false);
-      return;
     }
-    navigate(`/order/${order.reference}`);
   }
 
   return (

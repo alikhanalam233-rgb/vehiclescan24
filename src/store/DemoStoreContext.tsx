@@ -1,22 +1,15 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 import { DEFAULT_PACKAGES } from '@/data/packages';
 import { DEMO_ORDERS } from '@/data/demoOrders';
-import { generateAccessToken, nextReference } from '@/lib/orders';
+import { generateAccessToken } from '@/lib/orders';
 import type { Order, PackageId, ReportPackage } from '@/types';
 
 const ADMIN_SESSION_KEY = 'vs24-demo-admin';
-
-export interface NewOrderInput {
-  customerEmail: string;
-  vin: string;
-  packageId: PackageId;
-}
 
 export interface DemoStoreValue {
   orders: Order[];
   packages: ReportPackage[];
   isAdminSignedIn: boolean;
-  createOrder: (input: NewOrderInput) => Order | null;
   getOrder: (reference: string) => Order | undefined;
   getOrderByAccessToken: (token: string) => Order | undefined;
   updateOrder: (reference: string, patch: Partial<Order>) => void;
@@ -42,35 +35,6 @@ export function DemoStoreProvider({ children }: { children: ReactNode }) {
       orders,
       packages,
       isAdminSignedIn,
-      createOrder: ({ customerEmail, vin, packageId }) => {
-        const pkg = packages.find((item) => item.id === packageId);
-        if (!pkg) return null;
-        const order: Order = {
-          reference: nextReference(orders),
-          createdAt: new Date().toISOString(),
-          customerEmail,
-          vin,
-          packageId,
-          amount: pkg.price,
-          paymentStatus: 'awaiting_payment',
-          reportStatus: 'pending',
-          vehicle: {
-            make: '',
-            model: '',
-            buildYear: null,
-            firstRegistration: '',
-            fuelType: '',
-            colour: '',
-            mileageKm: null,
-          },
-          findings: [],
-          reportFile: null,
-          access: null,
-          emails: [],
-        };
-        setOrders((current) => [order, ...current]);
-        return order;
-      },
       getOrder,
       getOrderByAccessToken: (token) =>
         orders.find((order) => order.access?.token === token),

@@ -1,30 +1,81 @@
-import { CheckCircle2 } from 'lucide-react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { CheckCircle2, LoaderCircle } from 'lucide-react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { OrderProgress } from '@/components/order/OrderProgress';
 import { PaymentPanel } from '@/components/order/PaymentPanel';
 import { ButtonLink } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
-import { formatDate, formatPrice } from '@/lib/format';
-import { normalizeVin } from '@/lib/vin';
-import { PAYMENT_STATUS_META, REPORT_STATUS_META } from '@/lib/statusLabels';
-import { useDemoStore } from '@/store/DemoStoreContext';
 import { NotFoundPanel } from '@/components/ui/NotFoundPanel';
+import { fetchCustomerOrder, OrderRequestError, type CustomerOrder } from '@/lib/customerOrders';
+import { formatDate, formatPrice } from '@/lib/format';
+import { PAYMENT_STATUS_META, REPORT_STATUS_META } from '@/lib/statusLabels';
+import { normalizeVin } from '@/lib/vin';
+
+type LoadState =
+  | { status: 'loading' }
+  | { status: 'ready'; order: CustomerOrder }
+  | { status: 'not-found' }
+  | { status: 'error'; message: string };
 
 export function OrderConfirmationPage() {
   const { reference } = useParams();
-  const { getOrder, packages } = useDemoStore();
-  const order = reference ? getOrder(reference) : undefined;
+  const [searchParams] = useSearchParams();
+  const accessToken = searchParams.get('t') ?? '';
+  const [state, setState] = useState<LoadState>({ status: 'loading' });
 
-  if (!order) {
+  useEffect(() => {
+    if (!reference || !accessToken) {
+      setState({ status: 'not-found' });
+      return;
+    }
+    let cancelled = false;
+    setState({ status: 'loading' });
+    fetchCustomerOrder(reference, accessToken)
+      .then((order) => {
+        if (!cancelled) setState({ status: 'ready', order });
+      })
+      .catch((error: unknown) => {
+        if (cancelled) return;
+        if (error instanceof OrderRequestError && error.status === 404) {
+          setState({ status: 'not-found' });
+          return;
+        }
+        setState({ status: 'error', message: error instanceof Error ? error.message : 'Something went wrong.' });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [reference, accessToken]);
+
+  if (state.status === 'loading') {
+    return (
+      <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 px-5 py-32 text-steel-300">
+        <LoaderCircle className="h-5 w-5 animate-spin text-electric-300" />
+        Loading your order...
+      </div>
+    );
+  }
+
+  if (state.status === 'not-found') {
     return (
       <NotFoundPanel
         title="We could not find that order"
-        description="Check the reference in your confirmation email or contact us and we will help you."
+        description="Check the link in your confirmation email or contact us and we will help you."
       />
     );
   }
 
-  const pkg = packages.find((item) => item.id === order.packageId);
+  if (state.status === 'error') {
+    return (
+      <div className="mx-auto max-w-2xl px-5 py-32 text-center">
+        <h1 className="text-2xl font-semibold">We could not load your order</h1>
+        <p className="mt-4 text-steel-300">{state.message}</p>
+        <p className="mt-2 text-steel-400">Refresh this page in a moment, or contact us if it keeps happening.</p>
+      </div>
+    );
+  }
+
+  const { order } = state;
   const isPaid = order.paymentStatus === 'paid';
   const paymentMeta = PAYMENT_STATUS_META[order.paymentStatus];
   const reportMeta = REPORT_STATUS_META[order.reportStatus];
@@ -38,13 +89,13 @@ export function OrderConfirmationPage() {
         <p className="mt-6 font-mono text-sm tracking-wider text-steel-400">Order {order.reference}</p>
         <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Thank you, your order is in</h1>
         <p className="mx-auto mt-4 max-w-xl text-steel-300">
-          We have sent the order details to <span className="text-white">{order.customerEmail}</span>. Keep this
-          page or your confirmation email to check progress.
+          We have saved your order for <span className="text-white">{order.customerEmail}</span>. Keep this page
+          or your confirmation email to check progress.
         </p>
       </div>
 
       <div className="mt-12 surface-card p-6 sm:p-8">
-        <OrderProgress order={order} />
+        <OrderProgress paymentStatus={order.paymentStatus} reportStatus={order.reportStatus} />
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
@@ -54,7 +105,7 @@ export function OrderConfirmationPage() {
               <h2 className="text-lg font-semibold">Payment confirmed</h2>
               <p className="text-sm leading-relaxed text-steel-300">
                 Thank you for your payment. Our team is now compiling your report. When it is ready, we will email you
-                a secure link that is valid for {pkg?.reportValidityDays ?? 30} days.
+                a secure link that is valid for {order.reportValidityDays} days.
               </p>
             </section>
           ) : (
@@ -71,11 +122,11 @@ export function OrderConfirmationPage() {
             </div>
             <div className="flex justify-between gap-4">
               <dt className="text-steel-400">Package</dt>
-              <dd className="text-steel-100">{pkg?.name ?? 'Unknown'}</dd>
+              <dd className="text-steel-100">{order.packageName}</dd>
             </div>
             <div className="flex justify-between gap-4">
               <dt className="text-steel-400">Total incl. VAT</dt>
-              <dd className="text-steel-100">{formatPrice(order.amount)}</dd>
+              <dd className="text-steel-100">{formatPrice(order.amountCents / 100)}</dd>
             </div>
             <div className="flex justify-between gap-4">
               <dt className="text-steel-400">Ordered</dt>

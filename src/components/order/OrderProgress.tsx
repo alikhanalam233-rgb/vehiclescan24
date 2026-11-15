@@ -1,17 +1,17 @@
 import { Check, CircleDot } from 'lucide-react';
-import type { Order } from '@/types';
+import type { PaymentStatus, ReportStatus } from '@/types';
 
 interface Step {
   label: string;
   done: boolean;
 }
 
-export function OrderProgress({ order }: { order: Order }) {
+export function OrderProgress({ paymentStatus, reportStatus }: { paymentStatus: PaymentStatus; reportStatus: ReportStatus }) {
   const steps: Step[] = [
     { label: 'Order placed', done: true },
-    { label: 'Payment verified', done: order.paymentStatus === 'paid' },
-    { label: 'Report prepared', done: order.reportStatus === 'completed' || order.reportStatus === 'published' },
-    { label: 'Report delivered', done: order.reportStatus === 'published' },
+    { label: 'Payment verified', done: paymentStatus === 'paid' },
+    { label: 'Report prepared', done: reportStatus === 'completed' || reportStatus === 'published' },
+    { label: 'Report delivered', done: reportStatus === 'published' },
   ];
   const currentIndex = steps.findIndex((step) => !step.done);
 
