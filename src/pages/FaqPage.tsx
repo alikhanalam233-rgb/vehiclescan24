@@ -22,11 +22,6 @@ const FAQ_ITEMS = [
       'No. You check out as a guest with your email address and VIN. Your report is accessed through the secure link we send to your inbox.',
   },
   {
-    question: 'How long is my report link valid?',
-    answer:
-      'Links are valid for 30 to 90 days depending on your package. After that the link expires for security reasons. You can contact us to request a new link.',
-  },
-  {
     question: 'Can I download my report as a PDF?',
     answer:
       'Yes. Every report can be viewed online and downloaded as a PDF from the secure report page.',
