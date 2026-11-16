@@ -26,10 +26,9 @@ export function ReportPage() {
         <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-600/40 bg-amber-50 text-amber-700">
           <Clock className="h-7 w-7" />
         </span>
-        <h1 className="mt-6 text-3xl font-semibold">This report link has expired</h1>
+        <h1 className="mt-6 text-3xl font-semibold">This report link is no longer active</h1>
         <p className="mt-4 text-ink-700">
-          Secure report links are valid for a limited time. The link for order {order.reference} expired on{' '}
-          {formatDate(order.access.expiresAt)}. Contact us to request a new link.
+          The link for order {order.reference} is no longer active. Contact us to request a new link.
         </p>
       </div>
     );
@@ -41,7 +40,7 @@ export function ReportPage() {
     <>
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-5 pt-8 text-sm text-ink-600 lg:px-8">
         <ShieldAlert className="h-4 w-4 text-brand-700" />
-        Secure report link. It expires on {formatDate(order.access.expiresAt)}.
+        Secure report link.
       </div>
       <ReportView order={order} pkg={pkg} />
     </>

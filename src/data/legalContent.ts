@@ -80,7 +80,7 @@ export const TERMS_AND_CONDITIONS: LegalDocumentContent = {
     {
       heading: '3. Delivery',
       paragraphs: [
-        'Your report is delivered by email as a secure link. Delivery times depend on the chosen package and are estimates. The link is valid for the period stated for your package.',
+        'Your report is delivered by email as a secure link. Delivery times depend on the chosen package and are estimates. The PDF download is yours to keep forever.',
       ],
     },
     {

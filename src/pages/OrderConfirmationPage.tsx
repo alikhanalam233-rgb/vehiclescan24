@@ -105,7 +105,7 @@ export function OrderConfirmationPage() {
               <h2 className="text-lg font-semibold">Payment confirmed</h2>
               <p className="text-sm leading-relaxed text-ink-700">
                 Thank you for your payment. Our team is now compiling your report. When it is ready, we will email you
-                a secure link that is valid for {order.reportValidityDays} days.
+                a secure link to your report.
               </p>
             </section>
           ) : (

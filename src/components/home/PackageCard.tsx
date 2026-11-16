@@ -60,7 +60,7 @@ export function PackageCard({ pkg }: { pkg: ReportPackage }) {
         ))}
       </ul>
 
-      <p className="mt-6 text-xs text-ink-500">Report link valid for {pkg.reportValidityDays} days after delivery.</p>
+      <p className="mt-6 text-xs text-ink-500">PDF download - yours to keep forever</p>
 
       <ButtonLink
         to={`/checkout?package=${pkg.id}`}

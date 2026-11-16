@@ -53,9 +53,6 @@ export function ReportView({ order, pkg }: ReportViewProps) {
             Published <span className="text-ink-900">{access ? formatDate(access.publishedAt) : '-'}</span>
           </span>
           <span>
-            Link valid until <span className="text-ink-900">{access ? formatDate(access.expiresAt) : '-'}</span>
-          </span>
-          <span>
             Reference <span className="font-mono text-ink-900">{order.reference}</span>
           </span>
         </div>

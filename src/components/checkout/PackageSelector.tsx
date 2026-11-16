@@ -28,7 +28,6 @@ export function PackageSelector({ packages, value, onChange }: PackageSelectorPr
           >
             <span>
               <span className="block text-sm font-semibold text-ink-900">{pkg.name}</span>
-              <span className="block text-xs text-ink-600">Valid {pkg.reportValidityDays} days</span>
             </span>
             <span className="flex items-center gap-3">
               <span className="font-display text-base font-semibold text-ink-900">{formatPrice(pkg.price)}</span>
