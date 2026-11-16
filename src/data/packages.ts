@@ -4,7 +4,7 @@ export const DEFAULT_PACKAGES: ReportPackage[] = [
   {
     id: 'silver',
     name: 'Silver',
-    price: 29,
+    price: 29.99,
     tagline: 'Essential checks with stolen vehicle screening.',
     reportValidityDays: 30,
     features: [

@@ -63,7 +63,7 @@ export const DEMO_ORDERS: Order[] = [
     customerEmail: 'l.bakker@example.com',
     vin: 'VF1RFB00X57654321',
     packageId: 'silver',
-    amount: 29,
+    amount: 29.99,
     paymentStatus: 'awaiting_payment',
     reportStatus: 'pending',
     vehicle: {
