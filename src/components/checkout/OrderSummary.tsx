@@ -11,7 +11,7 @@ interface OrderSummaryProps {
 const NEXT_STEPS = [
   { icon: CreditCard, text: 'Your order is created, then you pay securely with PayPal.' },
   { icon: ShieldCheck, text: 'Our team verifies the payment and prepares your report.' },
-  { icon: Mail, text: 'You receive a secure, expiring link to your report by email.' },
+  { icon: Mail, text: 'You receive your full report as a PDF by email, yours to keep and download anytime.' },
 ];
 
 export function OrderSummary({ pkg, vin, email }: OrderSummaryProps) {
