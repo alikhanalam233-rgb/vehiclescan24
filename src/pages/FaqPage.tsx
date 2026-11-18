@@ -29,7 +29,7 @@ const FAQ_ITEMS = [
   {
     question: 'How do I pay?',
     answer:
-      'Payments are processed through PayPal. Your order is marked as paid only after the payment has been verified, so you will always see the correct status on your confirmation page.',
+      'Payments are processed securely by card. Your order is marked as paid only after the payment has been verified, so you will always see the correct status on your confirmation page.',
   },
   {
     question: 'Is a report a guarantee that a car is in good condition?',
