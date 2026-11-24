@@ -48,7 +48,7 @@ export function PackageCard({ pkg }: { pkg: ReportPackage }) {
 
       <p className="mt-6 flex items-baseline gap-2">
         <span className="font-display text-4xl font-semibold text-ink-900">{formatPrice(pkg.price)}</span>
-        <span className="text-sm text-ink-600">per report</span>
+        <span className="text-sm text-ink-600"></span>
       </p>
 
       <ul className="mt-6 flex-1 space-y-3 border-t border-black/10 pt-6">
