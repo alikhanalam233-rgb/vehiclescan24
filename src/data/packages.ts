@@ -13,8 +13,7 @@ export const DEFAULT_PACKAGES: ReportPackage[] = [
       'Basic VIN and specification check',
       'Online report view',
       'Stolen vehicle register check',
-      'Registration and ownership history',
-      'Online report and PDF download',
+      
     ],
   },
   {
